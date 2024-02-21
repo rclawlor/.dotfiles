@@ -10,9 +10,14 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
-					"taplo",
-					"clangd"
+					"lua_ls",	-- Lua
+					"taplo",	-- TOML
+					"clangd",	-- C/C++
+					"bashls", 	-- bash
+					"cmake",	-- CMake
+					"dockerls", -- Docker
+					"pyright", 	-- Python
+					"rust_analyzer", 	-- Rust
 				}
 			})
 		end
@@ -22,6 +27,7 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 
+			-- Lua
 			lspconfig.lua_ls.setup{
 				settings = {
 					Lua = {
@@ -33,8 +39,8 @@ return {
 				capabilities = require('cmp_nvim_lsp').default_capabilities()
 			}
 
+			-- Rust
 			lspconfig.rust_analyzer.setup {
-				-- Server-specific settings. See `:help lspconfig-setup`
 			  	settings = {
 					["rust-analyzer"] = {
 						check = {

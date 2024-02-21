@@ -1,13 +1,17 @@
+-- Vim commands
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
 vim.cmd("set noexpandtab")
 vim.cmd("set clipboard+=unnamedplus")
-vim.cmd(":nnoremap <C-d> <C-d>zz")
+
+vim.cmd(":nnoremap <C-d> <C-d>zz")		-- Centre screen when moving up/down
+vim.cmd(":nnoremap <C-u> <C-u>zz")
 vim.opt.number = true
 vim.opt.signcolumn = "number"
 vim.opt.relativenumber = true
 
+-- Lua mappings
 vim.api.nvim_create_autocmd('ColorScheme', {
 	pattern = '*',
 	callback = function()
