@@ -19,6 +19,18 @@ return {
 
 						}
 					}
+				},
+				pickers = {
+					find_files = {
+						file_ignore_patterns = { "venv" },
+						hidden = true
+					},
+					live_grep = {
+						file_ignore_patterns = { "venv" },
+						additional_args = function(_)
+							return { "--hidden" }
+						end
+					}
 				}
 			})
 			require("telescope").load_extension("ui-select")
