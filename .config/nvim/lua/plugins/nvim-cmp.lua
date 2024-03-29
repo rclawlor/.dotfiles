@@ -28,8 +28,8 @@ return {
       			['<C-Space>'] = cmp.mapping.complete(),
       			['<C-e>'] = cmp.mapping.abort(),
       			['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-				['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+				['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+				-- ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
 				['<Down>'] = cmp.mapping(function(fallback)
 						cmp.close()
 						fallback()

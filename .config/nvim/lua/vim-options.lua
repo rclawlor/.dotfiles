@@ -2,11 +2,19 @@
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
-vim.cmd("set noexpandtab")
+vim.cmd("set expandtab")
 vim.cmd("set clipboard+=unnamedplus")
 
-vim.cmd(":nnoremap <C-d> <C-d>zz")		-- Centre screen when moving up/down
+-- Centre screen when moving up/down
+vim.cmd(":nnoremap <C-d> <C-d>zz")
 vim.cmd(":nnoremap <C-u> <C-u>zz")
+
+-- Prevent use of arrow keys
+vim.cmd(":nnoremap <up> <nop>")
+vim.cmd(":nnoremap <down> <nop>")
+vim.cmd(":nnoremap <left> <nop>")
+vim.cmd(":nnoremap <right> <nop>")
+
 vim.opt.number = true
 vim.opt.signcolumn = "number"
 vim.opt.relativenumber = true
@@ -35,4 +43,4 @@ vim.api.nvim_create_user_command('LazyGit',
 )
 
 vim.api.nvim_set_keymap("n", "gg", "<cmd>LazyGit<CR>", {noremap = true, silent = true})
-
+vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
