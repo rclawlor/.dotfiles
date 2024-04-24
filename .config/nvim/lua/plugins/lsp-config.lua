@@ -31,12 +31,24 @@ return {
 			lspconfig.lua_ls.setup{
 				settings = {
 					Lua = {
+                        runtime = {
+                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                            version = "LuaJIT",
+                            path = vim.split(package.path, ";"),
+                        },
 						diagnostics = {
 							globals = { "vim" }
-						}
+						},
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files and plugins
+                            library = { vim.env.VIMRUNTIME },
+                            checkThirdParty = false,
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
 					}
 				},
-				capabilities = require('cmp_nvim_lsp').default_capabilities()
 			}
 
 			-- Rust
@@ -68,7 +80,7 @@ return {
 					local opts = { buffer = ev.buf }
 					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+					vim.keymap.set('n', 's', vim.lsp.buf.hover, opts)
 					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 					vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)

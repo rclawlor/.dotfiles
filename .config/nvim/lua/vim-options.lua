@@ -14,6 +14,7 @@ vim.cmd(":nnoremap <up> <nop>")
 vim.cmd(":nnoremap <down> <nop>")
 vim.cmd(":nnoremap <left> <nop>")
 vim.cmd(":nnoremap <right> <nop>")
+vim.cmd(":nnoremap <s> <nop>")
 
 vim.opt.number = true
 vim.opt.signcolumn = "number"
