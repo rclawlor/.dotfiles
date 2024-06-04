@@ -45,3 +45,5 @@ vim.api.nvim_create_user_command('LazyGit',
 
 vim.api.nvim_set_keymap("n", "gg", "<cmd>LazyGit<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>RegexText<CR>", {noremap = true, silent = true})
+

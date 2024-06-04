@@ -18,6 +18,7 @@ return {
 					"dockerls", -- Docker
 					"pyright", 	-- Python
 					"rust_analyzer", 	-- Rust
+                    "yamlls"      -- Yaml
 				}
 			})
 		end
@@ -28,7 +29,7 @@ return {
 			local lspconfig = require("lspconfig")
 
 			-- Lua
-			lspconfig.lua_ls.setup{
+			lspconfig.lua_ls.setup({
 				settings = {
 					Lua = {
                         runtime = {
@@ -49,23 +50,56 @@ return {
                         },
 					}
 				},
-			}
+			})
 
 			-- Rust
-			lspconfig.rust_analyzer.setup {
+			lspconfig.rust_analyzer.setup({
 			  	settings = {
 					["rust-analyzer"] = {
-						check = {
-							command = "clippy"
-						}
+                        cargo = {
+                            allFeatures = true,
+                            loadOutDirsFromCheck = true,
+                            runBuildScripts = true,
+                        },
+                        -- Add clippy lints for Rust.
+                        checkOnSave = {
+                            command = "clippy"
+                        },
+                        procMacro = {
+                            enable = true,
+                            ignored = {
+                                ["async-trait"] = { "async_trait" },
+                                ["napi-derive"] = { "napi" },
+                                ["async-recursion"] = { "async_recursion" },
+                            },
+                        },
 					},
 			  	},
 				capabilities = require('cmp_nvim_lsp').default_capabilities()
-			}
+			})
 
-			lspconfig.pyright.setup {
+            -- Python
+			lspconfig.pyright.setup({
 				capabilities = require('cmp_nvim_lsp').default_capabilities()
-			}
+			})
+
+            -- Yaml
+            lspconfig.yamlls.setup({})
+
+            -- TOML
+            lspconfig.taplo.setup({})
+
+            -- C/C++
+            lspconfig.clangd.setup({})
+
+            -- Bash
+            lspconfig.bashls.setup({})
+
+            -- CMake
+            lspconfig.cmake.setup({})
+
+            -- Docker
+            lspconfig.dockerls.setup({})
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
