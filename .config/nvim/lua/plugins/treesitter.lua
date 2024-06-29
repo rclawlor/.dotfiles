@@ -12,7 +12,8 @@ return {
 				"toml",
 				"c",
 				"cpp",
-				"proto"
+				"proto",
+                "javascript",
 			},
 			sync_install = false,
 			highlight = { enable = true },

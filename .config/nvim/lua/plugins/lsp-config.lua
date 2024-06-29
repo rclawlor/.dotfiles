@@ -10,15 +10,15 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",	-- Lua
-					"taplo",	-- TOML
-					"clangd",	-- C/C++
-					"bashls", 	-- bash
-					"cmake",	-- CMake
-					"dockerls", -- Docker
-					"pyright", 	-- Python
+					"lua_ls",	        -- Lua
+					"taplo",	        -- TOML
+					"clangd",	        -- C/C++
+					"bashls", 	        -- bash
+					"cmake",	        -- CMake
+					"dockerls",         -- Docker
+					"pyright", 	        -- Python
 					"rust_analyzer", 	-- Rust
-                    "yamlls"      -- Yaml
+                    "yamlls",           -- Yaml
 				}
 			})
 		end
